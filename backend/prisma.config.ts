@@ -1,0 +1,26 @@
+// import "dotenv/config";
+// import { defineConfig, env } from "prisma/config";
+
+// export default defineConfig({
+//   schema: "prisma/schema.prisma",
+//   migrations: {
+//     path: "prisma/migrations",
+//   },
+//   datasource: {
+//     url: env("DATABASE_URL"),
+//     directUrl: env("DIRECT_URL"),
+//   },
+//   engine: "classic",
+// });
+
+import "dotenv/config";
+import { defineConfig, env } from "prisma/config";
+
+export default defineConfig({
+  schema: "prisma/schema.prisma",
+  engine: "classic", // ✅ required for Supabase deployment
+  datasource: {
+    url: env("DATABASE_URL"),
+    directUrl: env("DIRECT_URL"),
+  },
+});
