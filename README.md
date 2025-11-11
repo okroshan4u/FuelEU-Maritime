@@ -63,6 +63,46 @@ flowchart TD
     CORE --> DB
 ```
 
+## 🚢 Application Workflow
+
+```mermaid
+flowchart TD
+    A["🏠 Dashboard Landing Page"]
+    B["📋 View Routes"]
+    C["📌 Set Baseline Route"]
+    D["🔄 Compare Baseline vs Other Routes"]
+    E{"✅ Is the route compliant?"}
+
+    F["🏦 Banking (Article 20)"]
+    F1["📤 Bank Positive CB"]
+    F2["📥 Apply Banked Surplus"]
+
+    G["🤝 Pooling (Article 21)"]
+    G1["➕ Add Ships to Pool"]
+    G2{"⚖️ Pool Sum ≥ 0 and Compliant?"}
+    G3["✅ Create Pool"]
+
+    H["📊 Updated Compliance Dashboard"]
+
+    %% Flow
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+
+    E -- No --> F
+    F --> F1
+    F --> F2
+    F --> H
+
+    E -- Yes --> G
+    G --> G1
+    G1 --> G2
+    G2 -- Yes --> G3
+    G3 --> H
+
+    G2 -- No --> F
+```
 ---
 
 ## 🔧 Setup Instructions (Local Development)
