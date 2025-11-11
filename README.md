@@ -38,7 +38,30 @@ It calculates vessel emission compliance, enables *Banking* (Article 20) and *Po
 ├── index.html
 └── package.json
 ```
+## ⚡ System Architecture — FuelEU Maritime Platform
 
+```mermaid
+flowchart TD
+    FE["🖥 React + Tailwind <br/> FuelEU Dashboard"]
+    ROUTES["📦 /routes API"]
+    COMPARE["📊 /compare API"]
+    BANK["🏦 Banking (Article 20)"]
+    POOL["🤝 Pooling (Article 21)"]
+    CORE["🧠 Domain Logic <br/> Hexagonal Architecture"]
+    DB["🗄 PostgreSQL (Supabase / Local)"]
+
+    FE --> ROUTES
+    FE --> COMPARE
+    FE --> BANK
+    FE --> POOL
+
+    ROUTES --> CORE
+    COMPARE --> CORE
+    BANK --> CORE
+    POOL --> CORE
+
+    CORE --> DB
+```
 
 ---
 
